@@ -5,7 +5,7 @@ import Storybook from './storybook'
 const App = () => (
   <>
     <StatusBar barStyle="dark-content" />
-    <SafeAreaView style={{ flex: 1}}>
+    <SafeAreaView style={{ flex: 1 }}>
       <Storybook />
     </SafeAreaView>
   </>
