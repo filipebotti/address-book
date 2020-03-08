@@ -6,8 +6,7 @@ module.exports = {
   extends: [
     "eslint:recommended",
     "plugin:react/recommended",
-    "airbnb",
-    "airbnb/hooks"
+    "airbnb"   
   ],
   globals: {
     Atomics: 'readonly',
