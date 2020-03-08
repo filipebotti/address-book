@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
@@ -18,12 +18,14 @@ const Phone = styled.Text`
   font-size: 12px;
 `
 
-const ContactListItem = ({ name, phone }) => (
+const ContactListItem = memo(({ name, phone }) => (
   <Wrapper>
     <Name>{name}</Name>
     <Phone>{phone}</Phone>
   </Wrapper>
-)
+), (prevProps, nextProps) => (
+  prevProps.name === nextProps.name && prevProps.phone === nextProps.phone
+))
 
 ContactListItem.propTypes = {
   name: PropTypes.string,
