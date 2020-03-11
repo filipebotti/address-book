@@ -22,23 +22,29 @@ const Title = styled.Text`
 `
 
 
-const MyContactsViews = ({ contacts }) => (
+const MyContactsViews = ({ contacts, isLoading, onRefetchContacts }) => (
   <Wrapper>
     <Header>
       <Title>Meus Contatos</Title>
     </Header>
     <ContactList
       contacts={contacts}
+      loading={isLoading}
+      onRefresh={onRefetchContacts}
     />
   </Wrapper>
 )
 
 MyContactsViews.propTypes = {
   contacts: PropTypes.array,
+  isLoading: PropTypes.bool,
+  onRefetchContacts: PropTypes.func,
 }
 
 MyContactsViews.defaultProps = {
   contacts: [],
+  isLoading: false,
+  onRefetchContacts: () => {},
 }
 
 export { MyContactsViews }
