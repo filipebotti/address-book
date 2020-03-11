@@ -1,8 +1,8 @@
 import React from 'react'
 import { SafeAreaView, StatusBar } from 'react-native'
+import { ContactProvider } from 'react-native-my-contacts'
 // import Storybook from './storybook'
 import MyContacts from './src/views/MyContacts'
-import { ContactProvider } from './src/hooks'
 
 const App = () => (
   <>

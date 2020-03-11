@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react'
 import { Alert } from 'react-native';
-import { useContacts } from '../../hooks'
-// import ContactManager from 'react-native-my-contacts'
-// unable to load lib direct from import, why? idk yet.
+import { useContacts } from 'react-native-my-contacts'
 
 
 const MyContactsLogic = Component => () => {
