@@ -14,6 +14,7 @@ export default () => {
       const resp = await NativeModules.ContactManager.getContacts()
       setContacts(resp)
     } catch (err) {
+      console.log(err)
       if (err.code === 'UNAUTHORIZED') {
         err.message = 'Você precisa autorizar o aplicativo para visualizar os contatos'
       } else {
