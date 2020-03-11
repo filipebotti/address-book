@@ -1,11 +1,27 @@
 import React from 'react'
-
+import styled from 'styled-components'
 import PropTypes from 'prop-types'
-import { FlatList, View } from 'react-native'
+import { FlatList } from 'react-native'
 import ContactListItem from './ContactListItem'
 
-const ItemSeparator = () => (
-  <View style={{ borderBottomColor: '#0000004D', borderBottomWidth: 0.5 }} />
+const ItemSeparator = styled.View`
+  border-bottom-color: #0000004D;
+  border-bottom-width: 0.5px;
+`
+const EmptyListWrapper = styled.View`
+  padding-top: 30px;
+  align-items: center;
+  justify-content: center;
+`
+const EmptyListText = styled.Text`
+  font-family: 'Roboto'
+  font-size: 16px;
+`
+
+const EmptyList = () => (
+  <EmptyListWrapper>
+    <EmptyListText>Puxe para baixo para atualizar</EmptyListText>
+  </EmptyListWrapper>
 )
 
 const ContactList = ({ contacts, loading, onRefresh }) => (
@@ -16,6 +32,7 @@ const ContactList = ({ contacts, loading, onRefresh }) => (
     ItemSeparatorComponent={ItemSeparator}
     keyExtractor={(item, index) => item.name + index}
     renderItem={({ item }) => <ContactListItem name={item.name} phones={item.phones} />}
+    ListEmptyComponent={EmptyList}
   />
 )
 
