@@ -1,22 +1,24 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { NativeModules, Alert } from 'react-native';
+// import ContactManager from 'react-native-my-contacts'
 
-const data = [
-  {
-    name: 'Filipe Botti',
-    phone: '(85) 99661-4898',
-  },
-  {
-    name: 'John Cena',
-    phone: '(31) 4333-3334',
-  },
-  {
-    name: 'Josefina',
-    phone: '(85) 9933-2345',
-  },
-]
 
 const MyContactsLogic = Component => () => {
-  const [contacts] = useState(data)
+  const [contacts, setContacts] = useState([])
+
+  useEffect(() => {
+    async function getContacts() {
+      try {
+        const resp = await NativeModules.ContactManager.getContacts()
+        setContacts(resp)
+      } catch (error) {
+        const message = error.code === 'UNAUTHORIZED' ? 'Você precisa permitir o acesso aos contatos.' : 'Erro ao tentar mostrar os conatos'
+        Alert.alert('Erro!', message)
+      }
+    }
+
+    getContacts()
+  }, [])
 
   return (
     <Component

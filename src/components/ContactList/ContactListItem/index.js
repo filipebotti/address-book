@@ -18,23 +18,30 @@ const Phone = styled.Text`
   font-size: 12px;
 `
 
-const ContactListItem = memo(({ name, phone }) => (
+const ContactListItem = memo(({ name, phones }) => (
   <Wrapper>
     <Name>{name}</Name>
-    <Phone>{phone}</Phone>
+    {
+      phones.map((phone) => (
+        <Phone key={phone.label + phone.value}>
+          {phone.label && <Phone>{`${phone.label} - `}</Phone>}
+          <Phone>{phone.value}</Phone>
+        </Phone>
+      ))
+    }
   </Wrapper>
 ), (prevProps, nextProps) => (
-  prevProps.name === nextProps.name && prevProps.phone === nextProps.phone
+  prevProps.name === nextProps.name && prevProps.phones === nextProps.phones
 ))
 
 ContactListItem.propTypes = {
   name: PropTypes.string,
-  phone: PropTypes.string,
+  phones: PropTypes.array,
 }
 
 ContactListItem.defaultProps = {
   name: '',
-  phone: '',
+  phones: [],
 }
 
 export default ContactListItem

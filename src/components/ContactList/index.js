@@ -12,7 +12,7 @@ const ContactList = ({ contacts }) => (
     data={contacts}
     ItemSeparatorComponent={ItemSeparator}
     keyExtractor={(item, index) => item.name + index}
-    renderItem={({ item }) => <ContactListItem name={item.name} phone={item.phone} />}
+    renderItem={({ item }) => <ContactListItem name={item.name} phones={item.phones} />}
   />
 )
 
